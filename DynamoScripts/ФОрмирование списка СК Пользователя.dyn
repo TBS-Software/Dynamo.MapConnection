@@ -1,0 +1,175 @@
+{
+  "Uuid": "ee41abd3-0c9c-41f6-a39b-888e89d9d14a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "ФОрмирование списка СК Пользователя",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "69abec2689e44dd299a3ffec6a7539fa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "17a3bf51e6364875a8fb285122c8168a",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.MapCSLibrary.GetCSList@string,bool",
+      "Id": "9d9f80187bdd457eb6182cc24018b9d3",
+      "Inputs": [
+        {
+          "Id": "88a02b2c83ad4dee876bb4e26429efcd",
+          "Name": "Folder_Path",
+          "Description": "Directory path to save TXT file\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "68066e1e866f43c1aabd7f8b9da353b0",
+          "Name": "selection",
+          "Description": "If = true, export all CS in Library, if false - only Users collection\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "542c7a44d5a44a87997d3d1978cdbf04",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Node GetCSList returns an external txt file that Contains strings with CS's names\n\nMapCSLibrary.GetCSList (Folder_Path: string, selection: bool): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\Georg\\Documents",
+      "InputValue": "C:\\Users\\Georg\\Documents",
+      "NodeType": "ExtensionNode",
+      "Id": "68802b8b6f204917a399596d74562646",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9c2f05cf0cc24cfbb0a754a9b87f3925",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать папку в системе и получить путь к ней"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "17a3bf51e6364875a8fb285122c8168a",
+      "End": "68066e1e866f43c1aabd7f8b9da353b0",
+      "Id": "e955cd6754a84a5cbe60c88647a17a37"
+    },
+    {
+      "Start": "9c2f05cf0cc24cfbb0a754a9b87f3925",
+      "End": "88a02b2c83ad4dee876bb4e26429efcd",
+      "Id": "24ec1159ce654efeb364ef15d4f5e7c0"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MapConnection",
+      "Version": "1.0.3",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "9d9f80187bdd457eb6182cc24018b9d3"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.1.7586",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "69abec2689e44dd299a3ffec6a7539fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 453.5,
+        "Y": 292.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapCSLibrary.GetCSList",
+        "Id": "9d9f80187bdd457eb6182cc24018b9d3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 714.5,
+        "Y": 265.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "68802b8b6f204917a399596d74562646",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 325.5,
+        "Y": 124.0
+      }
+    ],
+    "Annotations": [],
+    "X": -98.0,
+    "Y": 90.0,
+    "Zoom": 1.0
+  }
+}

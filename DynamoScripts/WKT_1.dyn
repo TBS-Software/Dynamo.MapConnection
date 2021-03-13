@@ -1,0 +1,364 @@
+{
+  "Uuid": "271c2e2c-b079-4a15-9a85-98ae96ec82af",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "WKT_1",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.CoordinateSystems.GetCurrentCoordinateSystem",
+      "Id": "448ef45c18774a21b24d03f3133c8f5a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "79886bd99fed401d91318449bfd1acc8",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "CoordinateSystems.GetCurrentCoordinateSystem ( ): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.CoordinateSystems.GetFullWKTCodeOfCS@string,string",
+      "Id": "2dbf0a93991d43cf8840bbfc73169800",
+      "Inputs": [
+        {
+          "Id": "efbb98eaa4ae4138bf55f9e38e1f7b58",
+          "Name": "Current_CS",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e391ba38ccd94f7cb6a459a451c61c36",
+          "Name": "XML_MapCSLibrary_path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7812f314abdc4eb2b5c8f615e26e6942",
+          "Name": "Console",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dc8add623f2b42bd960b3bc3bf6081de",
+          "Name": "Full_WKT",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "CoordinateSystems.GetFullWKTCodeOfCS (Current_CS: string, XML_MapCSLibrary_path: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "E:\\Work\\Temp\\Temp\\CSLibrary.xml",
+      "InputValue": "E:\\Work\\Temp\\Temp\\CSLibrary.xml",
+      "NodeType": "ExtensionNode",
+      "Id": "fab72c87a549471ea4481743cbbcd9ee",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7d1678855d704423bbce8c93fe6b479b",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать файл в системе и получить его имя"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.CoordinateSystems.GetGeodedictDescrOfCS_TM@string",
+      "Id": "cf69c6f27cbb4a50af9be2352011b7a9",
+      "Inputs": [
+        {
+          "Id": "f0efb96d10d94e96a683773327abdcb7",
+          "Name": "Full_WKT_string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ea3e25da4c5249b99c5d1429bb2f81b0",
+          "Name": "Ell_name",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5dac627cdf77418caa5414787e3c46e4",
+          "Name": "Ell_a",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0eac411a5cc24e439ec5becd8d84da26",
+          "Name": "Ell_flat",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ae32a436bdbb4af291dc2bb815235c8a",
+          "Name": "Datum_X",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2ef082cb804a4be4ad4f273ebbb2400d",
+          "Name": "Datum_Y",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c5965f9bde0949a2b9bc97a77ef9b708",
+          "Name": "Datum_Z",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cf4cd9a913f3473cbd85e3d5af0e071c",
+          "Name": "Datum_ωx",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7f10b1413a3446d384b2699b93f173dc",
+          "Name": "Datum_ωy",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "99ab5b35c560420ba0d961e87d680c15",
+          "Name": "Datum_ωz",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fb1343f913284f718eaaf08855e35e2d",
+          "Name": "Datum_m",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "77b9c3bded02453991166cff8c7d5d42",
+          "Name": "CS_Name",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ff109f85284b4e55bbbd3176579b5b4e",
+          "Name": "CS_CentrMerid",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "53a6d18e7ae94fe387fae1889a085bbb",
+          "Name": "CS_OrigLat",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f6bb7a893fe64c59941e0b091cae8f60",
+          "Name": "CS_FN",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "daad6680121e439ea6ee5b277b23ae60",
+          "Name": "CS_FE",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6cc7b4097f414e87a4f714619d2e5721",
+          "Name": "CS_k",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8c59caafa2a34c8ca19edc68ebcf1884",
+          "Name": "Units",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "CoordinateSystems.GetGeodedictDescrOfCS_TM (Full_WKT_string: string): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "79886bd99fed401d91318449bfd1acc8",
+      "End": "efbb98eaa4ae4138bf55f9e38e1f7b58",
+      "Id": "dc1a59ee6492443fb39f675683590195"
+    },
+    {
+      "Start": "dc8add623f2b42bd960b3bc3bf6081de",
+      "End": "f0efb96d10d94e96a683773327abdcb7",
+      "Id": "17d1ae71c90f4e4bb65ca684e75ebcff"
+    },
+    {
+      "Start": "7d1678855d704423bbce8c93fe6b479b",
+      "End": "e391ba38ccd94f7cb6a459a451c61c36",
+      "Id": "39f55c7e6b0b4af68adab0b0c79927fe"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "CoordinateSystems.GetCurrentCoordinateSystem",
+        "Id": "448ef45c18774a21b24d03f3133c8f5a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 194.5,
+        "Y": 240.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CoordinateSystems.GetFullWKTCodeOfCS",
+        "Id": "2dbf0a93991d43cf8840bbfc73169800",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 661.5,
+        "Y": 231.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "fab72c87a549471ea4481743cbbcd9ee",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 307.5,
+        "Y": 346.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CoordinateSystems.GetGeodedictDescrOfCS_TM",
+        "Id": "cf69c6f27cbb4a50af9be2352011b7a9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1077.5,
+        "Y": 106.0
+      }
+    ],
+    "Annotations": [],
+    "X": -60.462697235029054,
+    "Y": -25.477752683299173,
+    "Zoom": 0.95404292488281262
+  }
+}

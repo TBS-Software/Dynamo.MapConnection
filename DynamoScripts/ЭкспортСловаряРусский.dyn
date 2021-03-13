@@ -1,0 +1,233 @@
+{
+  "Uuid": "2f543cc5-dc70-42f1-b69a-2156be363815",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "ЭкспортСловаряРусский",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\GeorgKeneberg\\Documents\\Temp\\LOG",
+      "InputValue": "C:\\Users\\GeorgKeneberg\\Documents\\Temp\\LOG",
+      "NodeType": "ExtensionNode",
+      "Id": "aecf6769854c48ffa533feff83945d96",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "73319c81d21f438089d68afb9e6e7f6f",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать папку в системе и получить путь к ней"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "GetListOfCS.MapConnection.CS_Language_RUS",
+      "Id": "07b91d9d2b2e4773adfe7804a41b2e80",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "96bfdf4ed2cd402cbd8c683e8489e507",
+          "Name": "CS_value",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c22abe014ef34730ac1221c61d345fff",
+          "Name": "CS_Agree",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MapConnection.CS_Language_RUS ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "ca3b8598977b41d4ae6b22112d98d5ae",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9996fd9f89ea4f6f8a9933f5d688ffd2",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "GetListOfCS.MapConnection.GetPartOfMAPCSLIBRARY@string,string,string,bool",
+      "Id": "7072dfc167a64b509f80a40e38e63bc3",
+      "Inputs": [
+        {
+          "Id": "f89e09ca9a7947a5adab1c802ba99418",
+          "Name": "Folder_Path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3eae7d9d178e4a25a9900fb1c66023cb",
+          "Name": "CS_value",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "94d988a1b79347838b36604acdd508e7",
+          "Name": "CS_Agree",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3e25a0d09a5042ed962610279f48e399",
+          "Name": "selection",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "01bfad72213343b1888de292bdc8eea5",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MapConnection.GetPartOfMAPCSLIBRARY (Folder_Path: string, CS_value: string, CS_Agree: string, selection: bool): void"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "73319c81d21f438089d68afb9e6e7f6f",
+      "End": "f89e09ca9a7947a5adab1c802ba99418",
+      "Id": "7823fbb23c3a4b6ca552fe036dc9144c"
+    },
+    {
+      "Start": "96bfdf4ed2cd402cbd8c683e8489e507",
+      "End": "3eae7d9d178e4a25a9900fb1c66023cb",
+      "Id": "81becbef27554727b2518f8df67b37b1"
+    },
+    {
+      "Start": "c22abe014ef34730ac1221c61d345fff",
+      "End": "94d988a1b79347838b36604acdd508e7",
+      "Id": "bf7aa2a14a8b4b77a2b2c80e554781ba"
+    },
+    {
+      "Start": "9996fd9f89ea4f6f8a9933f5d688ffd2",
+      "End": "3e25a0d09a5042ed962610279f48e399",
+      "Id": "55e055fa30214ad09c331101037da427"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "aecf6769854c48ffa533feff83945d96",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 315.5,
+        "Y": 354.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapConnection.CS_Language_RUS",
+        "Id": "07b91d9d2b2e4773adfe7804a41b2e80",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 218.5,
+        "Y": 476.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "ca3b8598977b41d4ae6b22112d98d5ae",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 440.5,
+        "Y": 633.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapConnection.GetPartOfMAPCSLIBRARY",
+        "Id": "7072dfc167a64b509f80a40e38e63bc3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 662.61339092872572,
+        "Y": 401.0410367170627
+      }
+    ],
+    "Annotations": [],
+    "X": -91.350000000000023,
+    "Y": -73.080000000000041,
+    "Zoom": 1.1575
+  }
+}

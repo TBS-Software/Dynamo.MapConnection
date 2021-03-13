@@ -1,0 +1,219 @@
+{
+  "Uuid": "3a4467b6-b3a2-416a-b12d-df674f1fd6f8",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "WKT полные",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.MapCSLibrary.GetFullWKTCodeOfAllCS@string,bool,bool",
+      "Id": "8f37d525b5d4485fb6607a134c2b2122",
+      "Inputs": [
+        {
+          "Id": "2beef180a1e74cf2924a0b1cc34d0fb7",
+          "Name": "XML_MapCSLibrary_path_Full",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be7ff2d211c647bd9e067788dd2fd7cb",
+          "Name": "selection",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "343d7ac341a0472eb01078ff194fad8c",
+          "Name": "all_data",
+          "Description": "bool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0d17da36ed66479181d565d7217aa52b",
+          "Name": "Console",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "62d250d1024d412190a230e1c5495920",
+          "Name": "Full_WKT_List",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MapCSLibrary.GetFullWKTCodeOfAllCS (XML_MapCSLibrary_path_Full: string, selection: bool, all_data: bool = false): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "ed47629ed55e45dbbf8a92c8c6d8d8ec",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f2b3905735d143eabc307cb9cc58759e",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "0efc02b82b3a4ebcab4507e5f109f161",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "78cfbfa412364c1298ada8eb9ad6ebbd",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\GeorgKeneberg\\Documents\\Temp\\CSLibrary.xml",
+      "InputValue": "C:\\Users\\GeorgKeneberg\\Documents\\Temp\\CSLibrary.xml",
+      "NodeType": "ExtensionNode",
+      "Id": "21b599cb1412450cbc13b614c615ca86",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "db25c133568047d3a6861faef5b5f021",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать файл в системе и получить его имя"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f2b3905735d143eabc307cb9cc58759e",
+      "End": "343d7ac341a0472eb01078ff194fad8c",
+      "Id": "b1962afae7624b5088d9b98821aff7a9"
+    },
+    {
+      "Start": "78cfbfa412364c1298ada8eb9ad6ebbd",
+      "End": "be7ff2d211c647bd9e067788dd2fd7cb",
+      "Id": "9864097b4324449ead870e5802198261"
+    },
+    {
+      "Start": "db25c133568047d3a6861faef5b5f021",
+      "End": "2beef180a1e74cf2924a0b1cc34d0fb7",
+      "Id": "0236bc8131c64bfeb3b8ede6eaeb2dd0"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "MapCSLibrary.GetFullWKTCodeOfAllCS",
+        "Id": "8f37d525b5d4485fb6607a134c2b2122",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 671.5,
+        "Y": 340.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "ed47629ed55e45dbbf8a92c8c6d8d8ec",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 377.66050098870448,
+        "Y": 438.38704649541091
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "0efc02b82b3a4ebcab4507e5f109f161",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 378.70867185598786,
+        "Y": 370.25594012199053
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "21b599cb1412450cbc13b614c615ca86",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 307.43305288071724,
+        "Y": 246.57177778255061
+      }
+    ],
+    "Annotations": [],
+    "X": -106.50647522011258,
+    "Y": 31.057793686639883,
+    "Zoom": 0.9540429248828125
+  }
+}
