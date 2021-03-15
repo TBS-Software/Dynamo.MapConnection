@@ -14,7 +14,7 @@ Alternative way - download that package from Dynamo Package manager for name "Ma
 
 Альтернативный путь - скачать данный пакет из перечня менеджера пакетов Dynamo последней доступной версии (на текущий момент, 15 марта 2021г. это версия 1.0.6).
 ## Description and docs about nodes/Описание и справка о нодах
-All docs about nodes look at folder Docs. Some info in future I will record in YouTube.
+All docs about nodes look at [that guide](https://inj9.gitbook.io/dynamo-mapconnection/). Some info in future I will record in YouTube.
 
 Вся документация по нодам лежит в папке Docs. Некоторая информация будет позже опубликована в формате видеороликов на YouTube.
 ## Docs about scripts/Описания скриптов
