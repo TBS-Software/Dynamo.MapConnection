@@ -8,7 +8,7 @@ That package you can download as source code from that repository and build a so
 
 Пакет можен быть скачан как исходный код из данного репозитория и скомпилирован в решение (библиотеку классов dll), которая впоследствии будет импортирована в Dynamo как пользовательская библиотека.
 
-![Добавление пакета как библиотеки](C:\Work\Code\Dynamo.MapConnection\Docs\Screen\Image1.png). 
+![Добавление пакета как библиотеки](Docs\Screen\Image1.png). 
 
 Alternative way - download that package from Dynamo Package manager for name "MapConnection" last version (at 2021.03.15 that version is 1.0.6).
 
