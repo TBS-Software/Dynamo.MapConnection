@@ -16,7 +16,7 @@ Alternative way - download that package from Dynamo Package manager for name "Ma
 ## Description and docs about nodes/Описание и справка о нодах
 All docs about nodes look at [that guide](https://inj9.gitbook.io/dynamo-mapconnection/). Some info in future I will record in YouTube.
 
-Вся документация по нодам лежит в папке Docs. Некоторая информация будет позже опубликована в формате видеороликов на YouTube.
+Вся документация по нодам опубликована в пособи [по ссылке](https://inj9.gitbook.io/dynamo-mapconnection/). Некоторая информация будет позже опубликована в формате видеороликов на YouTube.
 ## Docs about scripts/Описания скриптов
 Part of scripts will be described at Package's page on DynamoBim forum ([link](https://forum.dynamobim.com/t/new-package-for-geospatial-coordinate-systems-and-tools-to-mapcslibrary/57126)). 
 
