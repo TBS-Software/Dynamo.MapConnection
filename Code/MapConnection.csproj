@@ -65,6 +65,7 @@
     </Reference>
     <Reference Include="CoreNodeModels, Version=2.2.0.4565, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DynamoVisualProgramming.WpfUILibrary.2.2.0.4565\lib\net47\CoreNodeModels.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="CoreNodeModelsWpf, Version=2.2.0.4565, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DynamoVisualProgramming.WpfUILibrary.2.2.0.4565\lib\net47\CoreNodeModelsWpf.dll</HintPath>
@@ -112,21 +113,27 @@
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Foundation">
       <HintPath>C:\Program Files\Autodesk\AutoCAD 2021\Map\bin\GisPlatform\OSGeo.MapGuide.Foundation.dll</HintPath>
@@ -144,9 +151,11 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="ProtoCore, Version=2.2.0.4565, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DynamoVisualProgramming.Core.2.2.0.4565\lib\net47\ProtoCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ProtoGeometry, Version=2.1.0.15993, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DynamoVisualProgramming.ZeroTouchLibrary.2.2.0.4565\lib\net47\ProtoGeometry.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -154,6 +163,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -164,6 +174,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="VMDataBridge, Version=2.2.0.4565, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DynamoVisualProgramming.Core.2.2.0.4565\lib\net47\VMDataBridge.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>

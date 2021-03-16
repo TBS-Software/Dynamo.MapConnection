@@ -389,7 +389,7 @@ namespace MapConnection
 
 
         }
-        public static void CreateCSList(string XML_MapCSLibrary_path, string Folder_Path, string TXT_CS_List_path, bool str_format = false)
+        public static void CreateCSList(string XML_MapCSLibrary_path, string Folder_Path, string TXT_CS_List_path)
         {
 
             string[] CS_List = File.ReadAllLines(TXT_CS_List_path);
@@ -425,8 +425,11 @@ namespace MapConnection
                 double CS_FE = 0d;
                 double CS_FN = 0d;
 
+        string Datum_descr_Name = null;
+        string Ellipsoid_Name = null;
+
                 //Смотрим на библиотеку XML и делаем выборку с проективными СК
-                var query_child_CS = CS_Lib2.Descendants().Where(m1 => m1.Name.LocalName == "ProjectedCoordinateSystem");
+        var query_child_CS = CS_Lib2.Descendants().Where(m1 => m1.Name.LocalName == "ProjectedCoordinateSystem");
                 foreach (var q1 in query_child_CS)
                 {
                     //Отбираем блок определения СК по нужному имени
@@ -458,9 +461,10 @@ namespace MapConnection
                     }
                 }
 
-                using (StreamWriter export_file = new StreamWriter(WKT_WritePath, true, Encoding.ASCII))
+
+        using (StreamWriter export_file = new StreamWriter(WKT_WritePath, true, Encoding.ASCII))
                 {
-                    export_file.WriteLine(CS_name + ',' + CS_LatOFO + ',' + CS_LongLONO + ',' + CS_Scale + ',' + CS_FE + ',' + CS_FN + Environment.NewLine);
+                    export_file.WriteLine(CS_name + ',' + CS_LatOFO + ',' + CS_LongLONO + ',' + CS_Scale + ',' + CS_FE + ','  + Environment.NewLine);
                 }
 
             }

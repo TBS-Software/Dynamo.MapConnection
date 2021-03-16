@@ -187,7 +187,7 @@ namespace MapConnection
 		/// </summary>
 		/// <param name="Folder_Path">Directory path to save TXT file</param>
 		/// <param name="selection">If = true, export all CS in Library, if false - only Users collection</param>
-		public static void GetCSList (string Folder_Path, bool selection)
+		public static string GetCSList (string Folder_Path, bool selection)
 		{
 			StringBuilder sb = new StringBuilder();
 			var guid = Guid.NewGuid();
@@ -223,7 +223,7 @@ namespace MapConnection
 			{
 				export_file.Write(sb.ToString());
 			}
-
+			return writePath;
 		}
 
 		

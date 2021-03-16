@@ -105,7 +105,6 @@ namespace MapConnection
       double a = 0d; //Main axis, meters
       double flattening = 0d; //Reverse flatenning = 1/...
 
-
       switch (EllipsoidName)
       {
         case "Krassowsky 1940, EPSG:7024":

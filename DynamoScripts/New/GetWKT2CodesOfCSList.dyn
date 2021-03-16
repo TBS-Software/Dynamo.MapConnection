@@ -1,0 +1,371 @@
+{
+  "Uuid": "853378f7-165c-4965-a646-43a55f5b6a0a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "GetWKT2CodesOfCSList",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.MapCSLibrary.GetCSList@string,bool",
+      "Id": "c5b21878c4a84222a9ab244992b09348",
+      "Inputs": [
+        {
+          "Id": "d491c50e373a404595d22ff1ba067dc8",
+          "Name": "Folder_Path",
+          "Description": "Directory path to save TXT file\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "79052389c4e947cface19fa93ddf8810",
+          "Name": "selection",
+          "Description": "If = true, export all CS in Library, if false - only Users collection\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "981dd5a136024293bc8f5f9c9582fb0e",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Node GetCSList returns an external txt file that Contains strings with CS's names\n\nMapCSLibrary.GetCSList (Folder_Path: string, selection: bool): string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "C:\\Users\\GeorgKeneberg\\Documents\\Temp",
+      "Id": "6974562b07bf45d490a5fce3f285d03a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "36f6d472c2114d8fa4030781cdf51ed5",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "56ff1904b3e242549211ac15610f0c0f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "24800088e1ab45ee8e8fdb8a4abd0c27",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.CoordinateSystems.GetWKT2Code_ofCSList@string,string,string,bool",
+      "Id": "f426ad7fe4f640f2a31be96e8476d42a",
+      "Inputs": [
+        {
+          "Id": "de7b713b60c048fca8ab2ec774413d1c",
+          "Name": "XML_MapCSLibrary_path",
+          "Description": "Path to CS_Library.xml\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1db47546e4c4440b9dbee2a8792cb307",
+          "Name": "Folder_Path",
+          "Description": "Absolute path to folder where need to create WKT's codes library\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "557c3370d2fa47979bf986e44ea38956",
+          "Name": "TXT_CS_List_path",
+          "Description": "Path to file witl Lisf of CS's names\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9ffacca10c97404eaf83f35a5942c998",
+          "Name": "str_format",
+          "Description": "If = true, WKT-code if split to strings; if false - it = one string\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "82bf58ad89b74390b90b4d779ba75334",
+          "Name": "void",
+          "Description": "String with Full-WKT2 code or result",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Node GetWKT2Code_ofCSLis return an external file with all codes for input CS's file\n\nCoordinateSystems.GetWKT2Code_ofCSList (XML_MapCSLibrary_path: string, Folder_Path: string, TXT_CS_List_path: string, str_format: bool = false): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\GeorgKeneberg\\Documents\\CSLibrary.xml",
+      "InputValue": "..\\..\\..\\..\\..\\Users\\GeorgKeneberg\\Documents\\CSLibrary.xml",
+      "NodeType": "ExtensionNode",
+      "Id": "03eb2e6b8d1546f48e89ca211cf53db3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1b28a39eb8484f7d83f7b5d015b8066e",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать файл в системе и получить его имя"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "C:\\Users\\GeorgKeneberg\\Documents\\Temp",
+      "Id": "9257fc9dfcaf4ac78247aba957b641d0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1741ef1e8f1f4ee792e315b30338302c",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "691c2d79ff9445bc9aef053af56ed738",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "787ed4a55c6a43d8ac80c382c03ee4e9",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "981dd5a136024293bc8f5f9c9582fb0e",
+      "End": "557c3370d2fa47979bf986e44ea38956",
+      "Id": "61d8863a20ca41abbf9695d3a212c18b"
+    },
+    {
+      "Start": "36f6d472c2114d8fa4030781cdf51ed5",
+      "End": "d491c50e373a404595d22ff1ba067dc8",
+      "Id": "b0531a29c0ba46c0ba82dae71e006599"
+    },
+    {
+      "Start": "24800088e1ab45ee8e8fdb8a4abd0c27",
+      "End": "79052389c4e947cface19fa93ddf8810",
+      "Id": "7aad24adb14b43088bf18056c1db85da"
+    },
+    {
+      "Start": "1b28a39eb8484f7d83f7b5d015b8066e",
+      "End": "de7b713b60c048fca8ab2ec774413d1c",
+      "Id": "73ff075a5588424c8b02413a5490719b"
+    },
+    {
+      "Start": "1741ef1e8f1f4ee792e315b30338302c",
+      "End": "1db47546e4c4440b9dbee2a8792cb307",
+      "Id": "0627d460cba2451880caeee47f61492a"
+    },
+    {
+      "Start": "787ed4a55c6a43d8ac80c382c03ee4e9",
+      "End": "9ffacca10c97404eaf83f35a5942c998",
+      "Id": "96a1208f97ba4eb68a32c114c16d1bc2"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MapConnection",
+      "Version": "1.0.6",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "c5b21878c4a84222a9ab244992b09348",
+        "f426ad7fe4f640f2a31be96e8476d42a"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "c5b21878c4a84222a9ab244992b09348",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "MapCSLibrary.GetCSList",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 542.5,
+        "Y": 503.0
+      },
+      {
+        "Id": "6974562b07bf45d490a5fce3f285d03a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 277.5,
+        "Y": 494.0
+      },
+      {
+        "Id": "56ff1904b3e242549211ac15610f0c0f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Boolean",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 294.5,
+        "Y": 602.0
+      },
+      {
+        "Id": "f426ad7fe4f640f2a31be96e8476d42a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CoordinateSystems.GetWKT2Code_ofCSList",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 902.5,
+        "Y": 455.0
+      },
+      {
+        "Id": "03eb2e6b8d1546f48e89ca211cf53db3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "PathToXML-Library",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 473.5,
+        "Y": 336.0
+      },
+      {
+        "Id": "9257fc9dfcaf4ac78247aba957b641d0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "SavePathFolder",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 591.5,
+        "Y": 421.0
+      },
+      {
+        "Id": "691c2d79ff9445bc9aef053af56ed738",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Boolean",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 634.5,
+        "Y": 618.0
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "5becfc14f764448da85f5d12c67779d5",
+        "Title": "Input data",
+        "Nodes": [
+          "6974562b07bf45d490a5fce3f285d03a",
+          "56ff1904b3e242549211ac15610f0c0f"
+        ],
+        "Left": 267.5,
+        "Top": 441.0,
+        "Width": 190.0,
+        "Height": 229.0,
+        "FontSize": 36.0,
+        "InitialTop": 494.0,
+        "InitialHeight": 253.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -159.0,
+    "Y": -97.0,
+    "Zoom": 1.0
+  }
+}

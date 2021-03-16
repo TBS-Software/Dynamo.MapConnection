@@ -1,0 +1,1175 @@
+{
+  "Uuid": "74fea18d-4bfc-4193-bdbd-e31b8ff73627",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "ConvertTMtoGeodeticAndTM",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.GeneralTerms.EllipsoidParameters@string",
+      "Id": "cfd9b23079454b1c89901a40c8fcfdac",
+      "Inputs": [
+        {
+          "Id": "474b396f635b45e48e40309397f676bd",
+          "Name": "EllipsoidName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6ba8fd8acae7464fb0b57e14a9a33046",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "GeneralTerms.EllipsoidParameters (EllipsoidName: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Krassowsky 1940, EPSG:7024\";\n\"WGS-84, EPSG:7030\";\n\"GSK-2011, EPSG:1025\";\n\"PZ 90.11\";\n\"PZ 90/PZ 90.02, EPSG:7054\";\n\"Bessel 1841, EPSG:7004\";",
+      "Id": "e30103216ab540c197a3a5b0ce63946d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9500053407584eb39b60358fe2308c7b",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "86b55606c71f46a79ae7c9842ba82e37",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "37f46932c84b4c148bac121c9f782d8b",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c0a0660ea4934e2e97a2b12a3da7a484",
+          "Name": "",
+          "Description": "Значение выражения в строке 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "777e5fb6f16f4c0882fca5ab5b950834",
+          "Name": "",
+          "Description": "Значение выражения в строке 5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4d4286264f7849719b222274f81a0039",
+          "Name": "",
+          "Description": "Значение выражения в строке 6",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.GeneralTerms.GetCSParameters@string",
+      "Id": "d02ada99560248ffb44f53ec93075b35",
+      "Inputs": [
+        {
+          "Id": "8c59cd4faa224a80834c849d4672677d",
+          "Name": "CS_Name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "edf348134fe249b28c99be29a4d1fb84",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "GeneralTerms.GetCSParameters (CS_Name: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.CoordTransform.TM_FromRectangleToGeodetic@var[]..[],var[]..[],double,double",
+      "Id": "9b2f776d2c644fff94840dcde8abb161",
+      "Inputs": [
+        {
+          "Id": "adf1536903784c43b81881179eff6aae",
+          "Name": "Ellipsoid",
+          "Description": "Словарь с параметрами эллипсоида (из данной коллекции нодов)\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1a35f65e814f4cfab0c2ab02110a6825",
+          "Name": "CS_Params",
+          "Description": "Словарь с параметрами систем координат (из данной коллекции нодов)\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "53babd2e21d44536bd85893f2e1d8743",
+          "Name": "CoordX",
+          "Description": "Координата X, метры (Восток/Easting)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "50462a061e6c4f13960ad350d07002dc",
+          "Name": "CoordY",
+          "Description": "Координата Y, метры (Север/North)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "68a292fea08645f7ac6633898053608a",
+          "Name": "Longitude, radians",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "238a2d628ed549149fa41d8a511a2721",
+          "Name": "Longitude, grades",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "246442c0cc1c471c8eedda811d51cf9a",
+          "Name": "Latitude, radians",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "80ca2a3a659942e49480fa7f0ef9a8dc",
+          "Name": "Latitude, grades",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Перевод плоских прямоугольных координат в геодезические на данном эллипсоиде\n\nCoordTransform.TM_FromRectangleToGeodetic (Ellipsoid: var[]..[], CS_Params: var[]..[], CoordX: double, CoordY: double): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "c80dd4cb729a4041bf205b68d6edf04e",
+      "Inputs": [
+        {
+          "Id": "a2b7045304af4ad78d2fd504562645b0",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "26592ffc650045368c268ef002abc359",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "6ab7a67a90d04095aa3521410bbe6c14",
+      "Inputs": [
+        {
+          "Id": "c28c25a720474cd68446de3a8cabfd2e",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "52bb5b5c107b488e949e73ee05336252",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "f4e5bdd2413f4d1ca53bf34078fdd431",
+      "Inputs": [
+        {
+          "Id": "569b87e165c042618f29167f10ecbd6a",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bffce6be9d16470d8f270067acf45417",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.GeneralTerms.Custom_EllipsoidParameters@string,string",
+      "Id": "25ae46c818cc4f23894efc2a028912f7",
+      "Inputs": [
+        {
+          "Id": "001a4659839c4ac39c257958f597f931",
+          "Name": "Axis_a_meters",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4bb28f373aae4a41858883a5584e9095",
+          "Name": "Flattening",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "835037d1a95348d9950abb75df089315",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "GeneralTerms.Custom_EllipsoidParameters (Axis_a_meters: string, Flattening: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"6377563.396\";\n\"299.32496\";",
+      "Id": "b903b1c998e14ca3a2f810d7170a620c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2d006b1998de40698b1875705b8cacd2",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c205345f2c2f4a7e8fd0dd9e3b4b925e",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Russia-MSK50-Zona2,0,38.48333333333,1,2250000,-5712900.566\";",
+      "Id": "ef06a79e25bc4465945a7680f0f09f4f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1db97f4393e94131ac879098bb280f7d",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Имя,Широта начала,Долгота осевого меридиана,Масштаб,Неверный запад,Неверный север\";",
+      "Id": "477a9022b907424ca813a7c02efcfb2e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d21cfcca0e7d45cd91e8d473250c1d88",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Name of CS,Latitude of natural origin,Longitude,Scale factor,False Easting,False Northing\";",
+      "Id": "6f188bfcf7604d2489f340a7c367b151",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "84fe067fc8824fd8b9b620b855a71183",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "116479.50982048;\n99975.21929290;",
+      "Id": "c43224b2aba241789537c38414819d2c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f019647534ce4644a7d82bf97b65798c",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "66597de1f8df43968745180dc06ec49d",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "11a0b9dd41ad4f68afac10aaf0c81885",
+      "Inputs": [
+        {
+          "Id": "5313270c2527405c87fa49074e116a3e",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "89e9810dff1d49f1bfc66ce4a8626f20",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.GeneralTerms.GetCSParameters@string",
+      "Id": "63f439d6ff26493a9431bc77265235ff",
+      "Inputs": [
+        {
+          "Id": "9032bb64329e40b7a642bcc5ee6758ad",
+          "Name": "CS_Name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "39280ffe4351400faf205b550bd4d0a3",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "GeneralTerms.GetCSParameters (CS_Name: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.CoordTransform.TM_FromGeodeticToRectangle@var[]..[],var[]..[],double,double",
+      "Id": "b9cd5e8f62934843a9154fd8c410b1e4",
+      "Inputs": [
+        {
+          "Id": "ca21d4e42dd44e19b042a16034614ce5",
+          "Name": "Ellipsoid",
+          "Description": "Словарь с параметрами эллипсоида (из данной коллекции нодов)\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "581e147ea443442297e04a75b14235d3",
+          "Name": "CS_Params",
+          "Description": "Словарь с параметрами систем координат (из данной коллекции нодов)\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "61d3d301beff4e3b849bc080d590b8a9",
+          "Name": "Latitude",
+          "Description": "Широта в радианах (если подаете в градусах, она пересчитается автоматически)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2697c88bb0dc43b18dcd9b772321321d",
+          "Name": "Longitude",
+          "Description": "Долгота в радианах (если подаете в градусах, она пересчитается автоматически)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "343fef70890949e882536ccb03d2d72b",
+          "Name": "Coord X, meters",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4589ee042153455aa4c66dcd8287976c",
+          "Name": "Coord Y, meters",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Перевод геодезических координат на данном эллипсоиде в плоские прямоугольные\n\nCoordTransform.TM_FromGeodeticToRectangle (Ellipsoid: var[]..[], CS_Params: var[]..[], Latitude: double, Longitude: double): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "d13b3a2fc6a64c0599042855f3dfd82d",
+      "Inputs": [
+        {
+          "Id": "abd0ff455d63456bb70fe534d5ca47f0",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f2011f6fcd9f41738efdbd0411c58aed",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.ResourceLibrary.CS_Russia_MSK1964",
+      "Id": "601a05d5b3cc4d53bca2ab34dadb330c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c36b50b4f9a24ca7a1ab4f82ca0dd531",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "ResourceLibrary.CS_Russia_MSK1964 ( ): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.ResourceLibrary.CS_Russia_MSK47_Zona2",
+      "Id": "8f08568cb132428c9455f51af987d421",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0d494a978e864fa8bea93e296b0416d0",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "ResourceLibrary.CS_Russia_MSK47_Zona2 ( ): string"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "6ba8fd8acae7464fb0b57e14a9a33046",
+      "End": "adf1536903784c43b81881179eff6aae",
+      "Id": "70e1797b1924459e8fa6726a7bd411bf"
+    },
+    {
+      "Start": "6ba8fd8acae7464fb0b57e14a9a33046",
+      "End": "5313270c2527405c87fa49074e116a3e",
+      "Id": "12534b7583ea440396fedf9daed969f9"
+    },
+    {
+      "Start": "6ba8fd8acae7464fb0b57e14a9a33046",
+      "End": "ca21d4e42dd44e19b042a16034614ce5",
+      "Id": "78c620254b87434b81e2cf50a6b0c0b5"
+    },
+    {
+      "Start": "9500053407584eb39b60358fe2308c7b",
+      "End": "474b396f635b45e48e40309397f676bd",
+      "Id": "7607d1fc18214179b8a9a6e3e895725a"
+    },
+    {
+      "Start": "edf348134fe249b28c99be29a4d1fb84",
+      "End": "1a35f65e814f4cfab0c2ab02110a6825",
+      "Id": "4c70dd5a5aa14a2a928f759c4a29efa6"
+    },
+    {
+      "Start": "edf348134fe249b28c99be29a4d1fb84",
+      "End": "569b87e165c042618f29167f10ecbd6a",
+      "Id": "d845ee898d6f46a1b08c93ffcd1426ac"
+    },
+    {
+      "Start": "68a292fea08645f7ac6633898053608a",
+      "End": "2697c88bb0dc43b18dcd9b772321321d",
+      "Id": "64935274e9c84df7ba8efe80124f0123"
+    },
+    {
+      "Start": "246442c0cc1c471c8eedda811d51cf9a",
+      "End": "61d3d301beff4e3b849bc080d590b8a9",
+      "Id": "7576a02039ea4557b7fa51eb94696d18"
+    },
+    {
+      "Start": "2d006b1998de40698b1875705b8cacd2",
+      "End": "001a4659839c4ac39c257958f597f931",
+      "Id": "7717910a710442708cf9fa7e56193b57"
+    },
+    {
+      "Start": "c205345f2c2f4a7e8fd0dd9e3b4b925e",
+      "End": "4bb28f373aae4a41858883a5584e9095",
+      "Id": "9aef412af4df4366ae29193b682e672c"
+    },
+    {
+      "Start": "f019647534ce4644a7d82bf97b65798c",
+      "End": "53babd2e21d44536bd85893f2e1d8743",
+      "Id": "75fe4a0e3372411c9187cbaf77a04f0c"
+    },
+    {
+      "Start": "66597de1f8df43968745180dc06ec49d",
+      "End": "50462a061e6c4f13960ad350d07002dc",
+      "Id": "6670f69e06964c06b3f1fd9083bb5c66"
+    },
+    {
+      "Start": "39280ffe4351400faf205b550bd4d0a3",
+      "End": "581e147ea443442297e04a75b14235d3",
+      "Id": "be6a18a2d4bb4d1793f03dd539968722"
+    },
+    {
+      "Start": "39280ffe4351400faf205b550bd4d0a3",
+      "End": "abd0ff455d63456bb70fe534d5ca47f0",
+      "Id": "7c0bd838ba6a4b81b1d4b38ac53efb27"
+    },
+    {
+      "Start": "343fef70890949e882536ccb03d2d72b",
+      "End": "a2b7045304af4ad78d2fd504562645b0",
+      "Id": "f40c43d492de4c62bfb74b2419e6b60b"
+    },
+    {
+      "Start": "4589ee042153455aa4c66dcd8287976c",
+      "End": "c28c25a720474cd68446de3a8cabfd2e",
+      "Id": "5a3297b78d9445b8a2797285d4da0eb2"
+    },
+    {
+      "Start": "c36b50b4f9a24ca7a1ab4f82ca0dd531",
+      "End": "8c59cd4faa224a80834c849d4672677d",
+      "Id": "9c741f64f6594d65855fef780235f094"
+    },
+    {
+      "Start": "0d494a978e864fa8bea93e296b0416d0",
+      "End": "9032bb64329e40b7a642bcc5ee6758ad",
+      "Id": "175c43e45a4d4099bc4e123efb7480cc"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MapConnection",
+      "Version": "1.0.6",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "cfd9b23079454b1c89901a40c8fcfdac",
+        "d02ada99560248ffb44f53ec93075b35",
+        "9b2f776d2c644fff94840dcde8abb161",
+        "25ae46c818cc4f23894efc2a028912f7",
+        "63f439d6ff26493a9431bc77265235ff",
+        "b9cd5e8f62934843a9154fd8c410b1e4",
+        "601a05d5b3cc4d53bca2ab34dadb330c",
+        "8f08568cb132428c9455f51af987d421"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Source Ellipsoid",
+        "Id": "cfd9b23079454b1c89901a40c8fcfdac",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -592.30142584084228,
+        "Y": -389.59601410682569
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Esisting ellipsoids/Доступные эллипсоиды",
+        "Id": "e30103216ab540c197a3a5b0ce63946d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -982.9089049259286,
+        "Y": -358.44251211022697
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GeneralTerms.GetCSParameters",
+        "Id": "d02ada99560248ffb44f53ec93075b35",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -589.66465244415087,
+        "Y": -86.734968633039784
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CoordTransform.TM_FromRectangleToGeodetic",
+        "Id": "9b2f776d2c644fff94840dcde8abb161",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -15.240655023136583,
+        "Y": -141.57477415520631
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "c80dd4cb729a4041bf205b68d6edf04e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 689.51270601620183,
+        "Y": -235.58151988190247
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "6ab7a67a90d04095aa3521410bbe6c14",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 690.8150387333,
+        "Y": 36.554445497921279
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Source CS's definition",
+        "Id": "f4e5bdd2413f4d1ca53bf34078fdd431",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -47.855112524324,
+        "Y": -501.24268428433925
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GeneralTerms.Custom_EllipsoidParameters",
+        "Id": "25ae46c818cc4f23894efc2a028912f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1399.3548505479646,
+        "Y": -339.60781648714288
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Ellipsoid | Airy 1830",
+        "Id": "b903b1c998e14ca3a2f810d7170a620c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1722.4650161369545,
+        "Y": -330.8707861295249
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Russia - Moscow CS - MSK-50-Zona2",
+        "Id": "ef06a79e25bc4465945a7680f0f09f4f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1672.7287748775668,
+        "Y": 24.698954959915056
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Пользовательская СК",
+        "Id": "477a9022b907424ca813a7c02efcfb2e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1728.5959774431867,
+        "Y": -166.52773958387277
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "User CS",
+        "Id": "6f188bfcf7604d2489f340a7c367b151",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1726.6491491743468,
+        "Y": -75.2542010411878
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Координаты точек (double)",
+        "Id": "c43224b2aba241789537c38414819d2c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -474.44694042605977,
+        "Y": 171.91379735919168
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Source Ellipsoid",
+        "Id": "11a0b9dd41ad4f68afac10aaf0c81885",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -36.7941149999823,
+        "Y": -647.5024449384531
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GeneralTerms.GetCSParameters",
+        "Id": "63f439d6ff26493a9431bc77265235ff",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -595.71442583115913,
+        "Y": 11.178417085149192
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CoordTransform.TM_FromGeodeticToRectangle",
+        "Id": "b9cd5e8f62934843a9154fd8c410b1e4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 331.12025527419337,
+        "Y": -143.81695763157023
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Finish CS's definition",
+        "Id": "d13b3a2fc6a64c0599042855f3dfd82d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 252.06079491487765,
+        "Y": -503.22593995935034
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ResourceLibrary.CS_Russia_MSK1964",
+        "Id": "601a05d5b3cc4d53bca2ab34dadb330c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -979.52539349481822,
+        "Y": -82.127562483491772
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ResourceLibrary.CS_Russia_MSK47_Zona2",
+        "Id": "8f08568cb132428c9455f51af987d421",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -972.9813800958658,
+        "Y": 16.032638500826039
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "0afa490c49aa4efeb120b0ff67e95175",
+        "Title": "Ellipsoid's selection/Выбор эллипсоидов",
+        "Nodes": [
+          "cfd9b23079454b1c89901a40c8fcfdac",
+          "e30103216ab540c197a3a5b0ce63946d"
+        ],
+        "Left": -992.9089049259286,
+        "Top": -442.59601410682569,
+        "Width": 659.60747908508631,
+        "Height": 259.15350199659872,
+        "FontSize": 36.0,
+        "InitialTop": -389.59601410682569,
+        "InitialHeight": 176.15350199659872,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "0807b6cebf124c57818ddfa7ff501744",
+        "Title": "Example of custom Ellipsoid (Airy 1830)",
+        "Nodes": [
+          "25ae46c818cc4f23894efc2a028912f7",
+          "b903b1c998e14ca3a2f810d7170a620c"
+        ],
+        "Left": -1732.4650161369545,
+        "Top": -435.60781648714288,
+        "Width": 624.11016558899,
+        "Height": 207.73703035761798,
+        "FontSize": 36.0,
+        "InitialTop": -339.60781648714288,
+        "InitialHeight": 153.737030357617,
+        "TextblockHeight": 86.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "88ce87e368974db98c331f69e855d933",
+        "Title": "Example of User CS's definition",
+        "Nodes": [
+          "477a9022b907424ca813a7c02efcfb2e",
+          "6f188bfcf7604d2489f340a7c367b151",
+          "ef06a79e25bc4465945a7680f0f09f4f"
+        ],
+        "Left": -1738.5959774431867,
+        "Top": -219.52773958387274,
+        "Width": 718.0,
+        "Height": 337.22669454378786,
+        "FontSize": 36.0,
+        "InitialTop": -166.52773958387277,
+        "InitialHeight": 336.226694543788,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "b425f7c8a7d44ba790f43e9baa211f0b",
+        "Title": "Example of User CS's definition",
+        "Nodes": [
+          "477a9022b907424ca813a7c02efcfb2e",
+          "6f188bfcf7604d2489f340a7c367b151"
+        ],
+        "Left": -1738.5959774431867,
+        "Top": -219.52773958387274,
+        "Width": 719.94682826883991,
+        "Height": 246.27353854268497,
+        "FontSize": 36.0,
+        "InitialTop": -166.52773958387277,
+        "InitialHeight": 236.273538542685,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "62273c1b8f84400cacf35eb522c6570f",
+        "Title": "For debugging and checking",
+        "Nodes": [
+          "f4e5bdd2413f4d1ca53bf34078fdd431",
+          "11a0b9dd41ad4f68afac10aaf0c81885",
+          "d13b3a2fc6a64c0599042855f3dfd82d"
+        ],
+        "Left": -57.855112524324,
+        "Top": -700.5024449384531,
+        "Width": 609.91590743920165,
+        "Height": 382.25976065411385,
+        "FontSize": 36.0,
+        "InitialTop": -647.5024449384531,
+        "InitialHeight": 684.03708241201366,
+        "TextblockHeight": 43.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "e68f8da2e9a44764a687c4e0c00ef9ed",
+        "Title": "TransverseMercator projection (rectangle coordinates)  to geodetic coordinates/Проекция Поперечная Меркатора (прямоугольные координаты) в геодезические координаты",
+        "Nodes": [
+          "9b2f776d2c644fff94840dcde8abb161"
+        ],
+        "Left": -25.240655023136583,
+        "Top": -259.57477415520634,
+        "Width": 327.0,
+        "Height": 289.0,
+        "FontSize": 18.0,
+        "InitialTop": -141.57477415520631,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 108.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "050f7147a6664dd39e0aca7b41e1095b",
+        "Title": "Руководство к использованию",
+        "Nodes": [
+          "6027eb2d6eee4d5a82039038c8574e75"
+        ],
+        "Left": -2065.9561667850703,
+        "Top": -275.86827630158996,
+        "Width": 314.0,
+        "Height": 299.0,
+        "FontSize": 36.0,
+        "InitialTop": -179.86827630158996,
+        "InitialHeight": 140.0,
+        "TextblockHeight": 86.0,
+        "Background": "#FF48B9FF"
+      },
+      {
+        "Id": "a55eb6a38ea243738183e88a415e8857",
+        "Title": "Output parameters (may be deleted)/Выходные параметры (могут быть удалены)",
+        "Nodes": [
+          "c80dd4cb729a4041bf205b68d6edf04e",
+          "6ab7a67a90d04095aa3521410bbe6c14"
+        ],
+        "Left": 679.51270601620183,
+        "Top": -389.58151988190247,
+        "Width": 218.87333333333333,
+        "Height": 535.1359653798238,
+        "FontSize": 24.0,
+        "InitialTop": -235.58151988190247,
+        "InitialHeight": 417.13596537982374,
+        "TextblockHeight": 144.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "130753dfc9db4326ac60223e06a0b670",
+        "Title": "TransverseMercator projection (geodetic coordinates) to rectangle coordinates/Проекция Поперечная Меркатора (геодезические координаты) в прямоугольные координаты",
+        "Nodes": [
+          "b9cd5e8f62934843a9154fd8c410b1e4"
+        ],
+        "Left": 321.12025527419337,
+        "Top": -261.81695763157023,
+        "Width": 327.0,
+        "Height": 289.0,
+        "FontSize": 18.0,
+        "InitialTop": -143.81695763157023,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 108.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "fb1078d7f5484b0788ce24fbdb7a5f6d",
+        "Title": "Системы координат (CS)",
+        "Nodes": [
+          "d02ada99560248ffb44f53ec93075b35",
+          "63f439d6ff26493a9431bc77265235ff",
+          "601a05d5b3cc4d53bca2ab34dadb330c",
+          "8f08568cb132428c9455f51af987d421"
+        ],
+        "Left": -989.52539349481822,
+        "Top": -139.73496863303978,
+        "Width": 629.86074105066734,
+        "Height": 248.76760713386582,
+        "FontSize": 36.0,
+        "InitialTop": -86.734968633039784,
+        "InitialHeight": 238.85563393177497,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "6027eb2d6eee4d5a82039038c8574e75",
+        "Title": "Указания к использованию:\r\n\r\nДанный скрипт позволяет пересчитать прямоугольные координаты чертежа из одной МСК в другую МСК на эллипсоиде Красовского (фактически, это все СК кроме МГГТ, для которой будет отдельный скрипт, дополненный датумом)\r\n\r\nВ качестве исходных данных он принимает либо преднастроенные параметры систем координат/эллипсоидов/датумов либо пользовательские параметры (розовая группа)",
+        "Nodes": [],
+        "Left": -2055.9561667850703,
+        "Top": -179.86827630158996,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 1047.612425534018,
+    "Y": 568.08485460458633,
+    "Zoom": 0.53937602720796063
+  }
+}
