@@ -170,6 +170,7 @@
   <ItemGroup>
     <Compile Include="CoordinateSystems.cs" />
     <Compile Include="CoordTransform.cs" />
+    <Compile Include="GeneralTerms.cs" />
     <Compile Include="MapCSLibrary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceLibrary.cs" />
@@ -177,9 +178,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\WKT-RusMSK.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\CS_Parameters.txt" />

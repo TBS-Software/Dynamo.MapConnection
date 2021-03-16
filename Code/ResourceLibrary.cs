@@ -9,7 +9,7 @@ namespace MapConnection
 	public class ResourceLibrary
 	{
 		private ResourceLibrary() { }
-		public static void Main(string PathToCSList, string PathToRecordFolder)
+		private static void CreateCSList(string PathToCSList, string PathToRecordFolder)
 		{
 			var guid = Guid.NewGuid();
 			string WritePath = $@"{PathToRecordFolder}\{guid}.txt";

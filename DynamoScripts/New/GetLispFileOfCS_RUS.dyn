@@ -1,0 +1,301 @@
+{
+  "Uuid": "c5465eb6-2ad2-4b7e-b65f-5c009246ab1c",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "GetLispFileOfCS_RUS",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.MapCSLibrary.CS_Language_RUS",
+      "Id": "1f9d4284ec5144ff804c0446c7effc8c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "431d41acaa1145bdb3471f972f0545a2",
+          "Name": "CS_value",
+          "Description": "CS_value, CS_Agree - give them to GetPartOfMAPCSLIBRARY or GetAllOfMAPCSLIBRARY",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b76bb688383b441c8d0580531437a92f",
+          "Name": "CS_Agree",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "CS_Language_RUS return system values for creation LSP file, if program language is Russian\n\nMapCSLibrary.CS_Language_RUS ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.MapCSLibrary.GetPartOfMAPCSLIBRARY@string,string,string,bool",
+      "Id": "f9da6f97d82640dbb52814ebdbf40089",
+      "Inputs": [
+        {
+          "Id": "16e280e03a57462ab416aeff5d750378",
+          "Name": "Folder_Path",
+          "Description": "Directory path to save LSP file\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "75014eb6e7334d97a9aa68d0119d07ed",
+          "Name": "CS_value",
+          "Description": "Name of type \"CoordinateSystem\"\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "59c60c8ffd114632b025b1b8dc92d435",
+          "Name": "CS_Agree",
+          "Description": "Permit to add other associated definitions\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9de84fcf957d4285becead277f6240e7",
+          "Name": "selection",
+          "Description": "If false - exporting only User's definitions; if true - exporting only system definitions\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4379d0fe539f4001bdbd5d84ec27ce72",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Node GetListOfMAPCSLIBRAR for export to LSP file naming of coordinate systems (user or system)\n\nMapCSLibrary.GetPartOfMAPCSLIBRARY (Folder_Path: string, CS_value: string, CS_Agree: string, selection: bool): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "5dab4facb49144c6bafe4ee84d8a3151",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c9aeffaf1eeb49979cea37d37eb3e020",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "C:\\",
+      "Id": "cc6ab6444fa7473281342465596dd203",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "02751e0a47fc480880c0e4685f624be7",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "MapConnection.MapCSLibrary.CS_Language_ENG",
+      "Id": "801255f38c3742c0898c975e5526a566",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bb12fd6f71b54c10bedb9031eaf55a98",
+          "Name": "CS_value",
+          "Description": "CS_value, CS_Agree - give them to GetPartOfMAPCSLIBRARY or GetAllOfMAPCSLIBRARY",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2938b36e74364ca7a87f86821314a79a",
+          "Name": "CS_Agree",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "CS_Language_ENG return system values for creation LSP file, if program language is English\n\nMapCSLibrary.CS_Language_ENG ( ): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "431d41acaa1145bdb3471f972f0545a2",
+      "End": "75014eb6e7334d97a9aa68d0119d07ed",
+      "Id": "eab838fd4eb94049803e1d7cf18012ac"
+    },
+    {
+      "Start": "b76bb688383b441c8d0580531437a92f",
+      "End": "59c60c8ffd114632b025b1b8dc92d435",
+      "Id": "5738de1f8f1045d3b400d88609d43ff7"
+    },
+    {
+      "Start": "c9aeffaf1eeb49979cea37d37eb3e020",
+      "End": "9de84fcf957d4285becead277f6240e7",
+      "Id": "7e1d10e36b3e47a595e7a5ec1f971a8c"
+    },
+    {
+      "Start": "02751e0a47fc480880c0e4685f624be7",
+      "End": "16e280e03a57462ab416aeff5d750378",
+      "Id": "3ae106a0faaa484db083007322e09a41"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MapConnection",
+      "Version": "1.0.6",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "1f9d4284ec5144ff804c0446c7effc8c",
+        "f9da6f97d82640dbb52814ebdbf40089",
+        "801255f38c3742c0898c975e5526a566"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "MapCSLibrary.CS_Language_RUS",
+        "Id": "1f9d4284ec5144ff804c0446c7effc8c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -117.0,
+        "Y": 153.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapCSLibrary.GetPartOfMAPCSLIBRARY",
+        "Id": "f9da6f97d82640dbb52814ebdbf40089",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 503.0,
+        "Y": 197.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "5dab4facb49144c6bafe4ee84d8a3151",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 145.0,
+        "Y": 371.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PathToLocationFile",
+        "Id": "cc6ab6444fa7473281342465596dd203",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 130.0,
+        "Y": 133.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapCSLibrary.CS_Language_ENG",
+        "Id": "801255f38c3742c0898c975e5526a566",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -114.0,
+        "Y": 265.5
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "dc02e61d20b44ef5bbcfb8a1a18b3ceb",
+        "Title": "Input data",
+        "Nodes": [
+          "1f9d4284ec5144ff804c0446c7effc8c",
+          "5dab4facb49144c6bafe4ee84d8a3151",
+          "cc6ab6444fa7473281342465596dd203"
+        ],
+        "Left": -127.0,
+        "Top": 80.5,
+        "Width": 417.0,
+        "Height": 359.0,
+        "FontSize": 36.0,
+        "InitialTop": 133.5,
+        "InitialHeight": 299.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 411.08403124999995,
+    "Y": 197.46093818620182,
+    "Zoom": 0.70823125000000009
+  }
+}
