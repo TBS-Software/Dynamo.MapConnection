@@ -89,7 +89,7 @@ namespace MapConnection
     public static Dictionary<string, double> Custom_EllipsoidParameters(string Axis_a_meters, string Flattening)
     {
       double a = Convert.ToDouble(Axis_a_meters); //Main axis, meters
-      double flattening = 1 / Convert.ToDouble(Flattening); //Reverse flatenning = 1/...
+      double flattening = 1 / Convert.ToDouble(Flattening); //Reverse flattening = 1/...
 
       double e2 = flattening * (2 - flattening); //Eccentricity in square
 
@@ -103,7 +103,7 @@ namespace MapConnection
     public static Dictionary<string, double> EllipsoidParameters(string EllipsoidName)
     {
       double a = 0d; //Main axis, meters
-      double flattening = 0d; //Reverse flatenning = 1/...
+      double flattening = 0d; //Reverse flattening = 1/...
 
       switch (EllipsoidName)
       {
@@ -133,12 +133,16 @@ namespace MapConnection
           break;
       }
       double e2 = flattening * (2 - flattening); //Eccentricity in square
+      double b = a - a * flattening;
+	  double e1 = 1/Math.Pow (1-Math.Pow(flattening,2),2);
 
       return new Dictionary<string, double>
                 {
                     {"Axis a", a},
                     {"Reverse flattening", flattening},
                     {"Eccentricity2", e2},
+					          {"Axis b",b},
+					          {"Second eccentricity",e1},
                 };
     }
     [MultiReturn(new[] { "Latitude, radians", "Longitude, radians", "Latitude, grades", "Longitude, grades", "Height, meters" })]

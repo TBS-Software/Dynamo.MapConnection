@@ -249,7 +249,116 @@ namespace MapConnection
       return 0.5 * Math.Log((x + 1) / (x - 1));
     }
 
+    [MultiReturn(new[] { "Coord X, meters", "Coord Y, meters" })]
+    public static Dictionary<string, double> P2_PZ9011_GeodToRect(double Latitude, double Longitude, Dictionary<string, double> Ellipsoid)
+    {
+      double pow(double value, int o) { return Math.Pow(value, o); }
+      //Step 1 - Исходные данные
+      //Параметры эллипсоида
+      double a = Ellipsoid["Axis a"]; double b = Ellipsoid["Axis b"]; double e2 = Ellipsoid["Eccentricity2"]; double e1 = Ellipsoid["Second eccentricity"];
+      //Initial data
+      double B = Latitude; double L = Longitude;
 
+      //Step 2 - Определение номера и осевого меридиана зоны
+      double n = Math.Truncate((6 + L * 180 / Math.PI) / 6); //Цулая часть выражения
+      double L0 = (6 * n - 3) * Math.PI / 180; //Долгота осевого меридиана зоны, рад
+
+      //Step 3 - Определение разности долгот l заданной точки и осевого меридиана зоны, рад:
+      double l = L - L0;
+
+      //Step 4 - Вычисление плоских прямоугольных координат x,y в проекции Гаусса-Крюгера, м и геодезической долготы(?)
+      //Step 4.1 - Вычисление S и коэффициентов a1,a2 ...:
+      double k = (a - b) / (a + b);
+      double S = a / (1 + k) * ((1 + pow(k, 2) / 4 + pow(k, 4) / 64) * B - (1.5 * k - 3 / 16 * pow(k, 3)) * Math.Sin(2 * B)
+        + (15 / 16 * pow(k, 2) - 15 / 16 * pow(k, 4)) * Math.Sin(4 * B) - 35 / 48 * k * Math.Sin(6 * B)); //Начальное значение абсциссы, м
+
+      double N = a * Math.Pow((1 - e2 * pow(Math.Sin(B), 2)), 0.5); //Радиус кривизны первого вертикала, м;
+      double η = e1 * Math.Cos(B);
+      double a1 = N * Math.Cos(B);
+      double a2 = 0.5 * Math.Sin(B) * Math.Cos(B);
+      double a3 = 1 / 6 * N * pow(Math.Cos(B), 3) * (1 - pow(Math.Tan(B), 2) + pow(η, 2));
+      double a4 = 1 / 24 * N * Math.Sin(B) * pow(Math.Cos(B), 3) * (5 - pow(Math.Tan(B), 2) + 9 * pow(η, 2) + 4 * pow(η, 4));
+      double a5 = 1 / 120 * N * pow(Math.Cos(B), 5) * (5 - 18 * pow(Math.Tan(B), 2) + pow(Math.Tan(B), 4) + 14 * pow(η, 2) - 58 * pow(η, 2) * pow(Math.Tan(B), 2));
+      double a6 = 1 / 720 * N * Math.Sin(B) * pow(Math.Cos(B), 5) * (61 - 58 * pow(Math.Tan(B), 2) + pow(Math.Tan(B), 4) + 270 * pow(η, 2) - 330 * pow(η, 2) * pow(Math.Tan(B), 2));
+      double a7 = 1 / 5040 * N * pow(Math.Cos(B), 7) * (61 - 479 * pow(Math.Tan(B), 2) + 179 * pow(Math.Tan(B), 4) - pow(Math.Tan(B), 6));
+      double a8 = 1 / 40320 * N * Math.Sin(B) * pow(Math.Cos(B), 7) * (1385 - 3111 * pow(Math.Tan(B), 2) + 543 * pow(Math.Tan(B), 4) - pow(Math.Tan(B), 6));
+
+      double x = S + a2 * pow(l, 2) + a4 * pow(l, 4) + a6 * pow(l, 6) + a8 * pow(l, 8);
+      double y = a1 * l + a3 * pow(l, 3) + a5 * pow(l, 5) + a7 * pow(l, 7);
+
+      return new Dictionary<string, double>
+      {
+        {"Coord X, meters", x},
+        {"Coord Y, meters", y },
+      };
+    }
+    [MultiReturn(new[] { "Latitude, rad", "Longitude, rad" })]
+    public static Dictionary <string,double> P2_PZ9011_RectToGeod(double x, double y, int n, Dictionary<string, double> Ellipsoid)
+    {
+      double pow(double value, int o) { return Math.Pow(value, o); }
+      //Step 0 - Исходные данные
+
+      //Параметры эллипсоида
+      double a = Ellipsoid["Axis a"]; double b = Ellipsoid["Axis b"]; double e2 = Ellipsoid["Eccentricity2"]; double e1 = Ellipsoid["Second eccentricity"];
+
+      //Step 1 - Выделание из условной координаты y1 номера зоны n:
+      double y1 = y + (5 + 10 * n) * 100000d;
+      n = Convert.ToInt32(Math.Truncate(y1 * pow(10, -6)));
+      //Step 2 - Вычисление долготы L0 осевого меридиана зоны, рад
+      double L0 = (6 * n - 3) * Math.PI / 180;
+      //Step 3 - Вычисление значения ординаты y, м:
+      y = y1 - (5 + 10 * n) * pow(10, 5);
+      //Step 4 - Вычмсление геодезических координат, рад:
+      //Step 4.1 Вычисление коэффициентов A1,A2... и Bx
+      double e0 = 1 - 1 / 4 * e2 - 3 / 64 * pow(e2, 2) - 2 / 256 * pow(e2, 3) - 175 / 16384 * pow(e2, 4) - 411 / 65536 * pow(e2, 5);
+      double C2 = 3 / 8 * e2 + 3 / 16 * pow(e2, 4) + 213 / 2048 * pow(e2, 3) + 255 / 4096 * pow(e2, 4) + 166479 / 655360 * pow(e2, 5);
+      double C4 = 21 / 256 * pow(e2, 4) + 21 / 256 * pow(e2, 3) + 533 / 8192 * pow(e2, 4) - 120563 / 327680 * pow(e2, 5);
+      double C6 = 151 / 6144 * pow(e2, 3) + 147 / 4096 * pow(e2, 4) + 2732071 / 9175040 * pow(e2, 5);
+      double C8 = 1097 / 131072 * pow(e2, 4) - 273697 / 4587520 * pow(e2, 5);
+      double Bx = x / (a * e0) + C2 * Math.Sin(2 * x / (a * e0)) + C4 * Math.Sin(4 * x / (a * e0)) + +C6 * Math.Sin(6 * x / (a * e0)) + C8 * Math.Sin(8 * x / (a * e0));
+
+      double Nx = a / (Math.Pow(1 - e2 * pow(Math.Sin(Bx), 2), 0.5));
+      double ηx = e1 * Math.Cos(Bx);
+      double Vx2 = 1 + pow(ηx, 2);
+
+      double tg2Bx = pow(Math.Tan(Bx), 2);
+      double tg4Bx = pow(Math.Tan(Bx), 4);
+      double tg6Bx = pow(Math.Tan(Bx), 6);
+
+      double A1 = 1 / (Nx * Math.Cos(Bx));
+      double A2 = -0.5 * Math.Tan(Bx) * Vx2 / pow(Nx, 2);
+      double A3 = -1 / 6 * A1 / pow(Nx, 2) * (1 + 2 * tg2Bx + pow(ηx, 2));
+      double A4 = -1 / 12 * A2 / pow(Nx, 2) * (5 + 3 * tg2Bx + pow(ηx, 2) - 9 * pow(ηx, 2) * tg2Bx - 4 * pow(ηx, 4));
+      double A5 = 1 / 120 * A1 / pow(Nx, 4) * (5 + 28 * tg2Bx + 24 * tg4Bx + 6 * pow(ηx, 2) + 8 * pow(ηx, 2) * tg2Bx);
+      double A6 = 1 / 360 * A2 / pow(Nx, 4) * (61 + 90 * tg2Bx + 45 * tg4Bx + 46 * pow(ηx, 2) - 252 * pow(ηx, 2) * tg2Bx - 90 * pow(ηx, 2) * tg4Bx);
+      double A7 = -1 / 5040 * A1 / pow(Nx, 6) * (61 + 662 * tg2Bx + 1320 * tg4Bx + 720 * tg6Bx);
+      double A8 = -1 / 20160 * A2 / pow(Nx, 6) * (1385 + 3633 * tg2Bx + 4095 * tg4Bx + 1575 * tg6Bx);
+
+      double B = Bx + A2 * pow(y, 2) + A4 * pow(y, 4) + A6 * pow(y, 6) + A8 * pow(y, 8);
+      double l = A1 * y + A3 * pow(y, 3) + A5 * pow(y, 5) + A7 * pow(y, 7);
+      double L = L0 + l;
+
+      return new Dictionary<string, double>
+      {
+        {"Latitude, rad", B},
+        {"Longitude, rad", L },
+      };
+    }
+
+    [MultiReturn(new[] { "Latitude, rad", "Longitude, rad" })]
+    public static Dictionary<string, double> PZ9011_GeodToRect(double Latitude, double Longitude)
+    {
+      double pow(double value, int o) { return Math.Pow(value, o); }
+      //Step 0 - Исходные данные
+      double B = Latitude; double L = Longitude;
+
+
+      return new Dictionary<string, double>
+      {
+        {"Latitude, rad", B},
+        {"Longitude, rad", L },
+      };
+    }
   }
 
     
