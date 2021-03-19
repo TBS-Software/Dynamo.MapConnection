@@ -179,6 +179,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cadastr.cs" />
     <Compile Include="CoordinateSystems.cs" />
     <Compile Include="CoordTransform.cs" />
     <Compile Include="GeneralTerms.cs" />
