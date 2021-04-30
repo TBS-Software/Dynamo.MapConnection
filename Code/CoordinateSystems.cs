@@ -389,7 +389,13 @@ namespace MapConnection
 
 
         }
-        public static void CreateCSList(string XML_MapCSLibrary_path, string Folder_Path, string TXT_CS_List_path)
+        /// <summary>
+        /// Create external TXT-file with CS parameters
+        /// </summary>
+        /// <param name="XML_MapCSLibrary_path">Path to XML-library</param>
+        /// <param name="Folder_Path">Path to folder where there will creating file</param>
+        /// <param name="TXT_CS_List_path">Path to saved file</param>
+    public static void CreateCSList(string XML_MapCSLibrary_path, string Folder_Path, string TXT_CS_List_path)
         {
 
             string[] CS_List = File.ReadAllLines(TXT_CS_List_path);

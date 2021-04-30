@@ -24,17 +24,17 @@ namespace MapConnection
   public class CoordTransform
   { 
         private CoordTransform() { }
-       
 
-            /// <summary>
-            /// Перевод геодезических координат на данном эллипсоиде в плоские прямоугольные
-            /// </summary>
-            /// <param name="Ellipsoid">Словарь с параметрами эллипсоида (из данной коллекции нодов)</param>
-            /// <param name="CS_Params">Словарь с параметрами систем координат (из данной коллекции нодов)</param>
-            /// <param name="Latitude">Широта в радианах (если подаете в градусах, она пересчитается автоматически)</param>
-            /// <param name="Longitude">Долгота в радианах (если подаете в градусах, она пересчитается автоматически)</param>
-            /// <returns></returns>
-            [MultiReturn(new[] { "Coord X, meters", "Coord Y, meters" })]
+
+    /// <summary>
+    ///  Convert geodetic coordinates to rectangle coordinates
+    /// </summary>
+    /// <param name="Ellipsoid">Dictionary with ellipsoid parameters</param>
+    /// <param name="CS_Params">Dictionary with parameters of CS</param>
+    /// <param name="Latitude">Latitude in radians</param>
+    /// <param name="Longitude">Longitude in radians</param>
+    /// <returns>Dictionary with two coordinates (recalculated rectangle's coordinate X and Y) from geodetic coordinates of point (values of it's latitude and longitude)</returns>
+    [MultiReturn(new[] { "Coord X, meters", "Coord Y, meters" })]
             public static Dictionary<string, double> TM_FromGeodeticToRectangle (
                 Dictionary <string,double> Ellipsoid, 
                 Dictionary<string, double> CS_Params, 
@@ -115,15 +115,15 @@ namespace MapConnection
                     {"Coord Y, meters", Northing},
                 };
             }
-            /// <summary>
-            /// Перевод плоских прямоугольных координат в геодезические на данном эллипсоиде
-            /// </summary>
-            /// <param name="Ellipsoid">Словарь с параметрами эллипсоида (из данной коллекции нодов)</param>
-            /// <param name="CS_Params">Словарь с параметрами систем координат (из данной коллекции нодов)</param>
-            /// <param name="CoordX">Координата X, метры (Восток/Easting)</param>
-            /// <param name="CoordY">Координата Y, метры (Север/North)</param>
-            /// <returns></returns>
-            [MultiReturn(new[] { "Longitude, radians", "Longitude, grades", "Latitude, radians", "Latitude, grades" })]
+    /// <summary>
+    /// Node that return a rectangle coordinates from input geodetic in radians
+    /// </summary>
+    /// <param name="Ellipsoid">Dictionary with ellipsoid parameters</param>
+    /// <param name="CS_Params">Dictionary with parameters of CS</param>
+    /// <param name="CoordX">Coord X, meters (Восток/Easting)</param>
+    /// <param name="CoordY">Coord Y, meters (Север/North)</param>
+    /// <returns>Dictionary with two coordinates (recalculated geodetic coordinate Latitude and Longitude) from rectangle coordinates of point</returns>
+    [MultiReturn(new[] { "Longitude, radians", "Longitude, grades", "Latitude, radians", "Latitude, grades" })]
     public static Dictionary<string, double> TM_FromRectangleToGeodetic(
                 Dictionary<string, double> Ellipsoid,
                 Dictionary<string, double> CS_Params,
@@ -218,9 +218,29 @@ namespace MapConnection
                    {"Latitude, grades", φ1*180/Math.PI},
                 };
     }
+    /// <summary>
+    /// Convert string value to double-number
+    /// </summary>
+    /// <param name="str">Sting's version of number</param>
+    /// <returns>Double value</returns>
     public static double StringToDouble(string str) { return Convert.ToDouble(str); }
+    /// <summary>
+    /// Node that convert grade-value of angle to radians
+    /// </summary>
+    /// <param name="grades"></param>
+    /// <returns>Radian value of angle</returns>
     public static double GradesToRadians(double grades) { return grades/180*Math.PI; }
+    /// <summary>
+    /// Node that convert radian-value of angle to grade
+    /// </summary>
+    /// <param name="radians"></param>
+    /// <returns>Grade value of angle</returns>
     public static double RadiansToGrades(double radians) { return radians*180/Math.PI; }
+    /// <summary>
+    /// Convert classic grade-value of angle to string-format f.e. 10.0545 to 10°03'16.2''
+    /// </summary>
+    /// <param name="grades">Double-value of angle in grades</param>
+    /// <returns>String value of grades</returns>
     public static string StrFormatOfGraduses (double grades)
 		{
       double Int_grad = Math.Floor(grades);
@@ -248,9 +268,9 @@ namespace MapConnection
     {
       return 0.5 * Math.Log((x + 1) / (x - 1));
     }
-
+    ///
     [MultiReturn(new[] { "Coord X, meters", "Coord Y, meters" })]
-    public static Dictionary<string, double> P2_PZ9011_GeodToRect(double Latitude, double Longitude, Dictionary<string, double> Ellipsoid)
+    private static Dictionary<string, double> P2_PZ9011_GeodToRect(double Latitude, double Longitude, Dictionary<string, double> Ellipsoid)
     {
       double pow(double value, int o) { return Math.Pow(value, o); }
       //Step 1 - Исходные данные
@@ -293,7 +313,7 @@ namespace MapConnection
       };
     }
     [MultiReturn(new[] { "Latitude, rad", "Longitude, rad" })]
-    public static Dictionary <string,double> P2_PZ9011_RectToGeod(double x, double y, int n, Dictionary<string, double> Ellipsoid)
+    private static Dictionary <string,double> P2_PZ9011_RectToGeod(double x, double y, int n, Dictionary<string, double> Ellipsoid)
     {
       double pow(double value, int o) { return Math.Pow(value, o); }
       //Step 0 - Исходные данные
@@ -346,7 +366,7 @@ namespace MapConnection
     }
 
     [MultiReturn(new[] { "Latitude, rad", "Longitude, rad" })]
-    public static Dictionary<string, double> PZ9011_GeodToRect(double Latitude, double Longitude)
+    private static Dictionary<string, double> PZ9011_GeodToRect(double Latitude, double Longitude)
     {
       double pow(double value, int o) { return Math.Pow(value, o); }
       //Step 0 - Исходные данные
@@ -358,6 +378,49 @@ namespace MapConnection
         {"Latitude, rad", B},
         {"Longitude, rad", L },
       };
+    }
+    /// <summary>
+    /// Cnange georeferncing of LandXML file (recalculate each point)
+    /// </summary>
+    /// <param name="PathToLandXML">Path to LandXML-file</param>
+    /// <param name="Ellipsoid">Dictionary with ellipsoid parameters</param>
+    /// <param name="CS_Params">Dictionary with source CS parameters</param>
+    /// <param name="CS_Params2">Dictionary with target CS parameters</param>
+    public static void ReProjectLandXMLSurface(
+      string PathToLandXML,
+      Dictionary<string, double> Ellipsoid,
+      Dictionary<string, double> CS_Params,
+      Dictionary<string, double> CS_Params2)
+    {
+      XDocument LandXML = XDocument.Load(PathToLandXML);
+      string PathToSave = Path.GetDirectoryName(PathToLandXML) + $"\\Recalc_{Guid.NewGuid().ToString()}.xml";
+
+      foreach (string str in File.ReadLines(PathToLandXML))
+      {
+        if (str.Contains("<P id="))
+        {
+          int Index1 = str.IndexOf(">")+1;
+          int Index2 = str.LastIndexOf("<");
+          string StartStr = str.Substring(0, Index1);
+          string ValuesStr = str.Substring(Index1, Index2 - Index1);
+
+          string[] SinglePoint = ValuesStr.Split(' ');
+          double Point_X = Convert.ToSingle(SinglePoint[1]);
+          double Point_Y = Convert.ToSingle(SinglePoint[0]);
+          double Point_Z = Convert.ToSingle(SinglePoint[2]);
+
+          double Long = TM_FromRectangleToGeodetic(Ellipsoid, CS_Params, Point_X, Point_Y)["Longitude, radians"];
+          double Lat = TM_FromRectangleToGeodetic(Ellipsoid, CS_Params, Point_X, Point_Y)["Latitude, radians"];
+
+          double Point2_X = TM_FromGeodeticToRectangle(Ellipsoid, CS_Params2, Lat, Long)["Coord X, meters"];
+          double Point2_Y = TM_FromGeodeticToRectangle(Ellipsoid, CS_Params2, Lat, Long)["Coord Y, meters"];
+
+          string NewStr = StartStr + Point2_Y + ' ' + Point2_X + ' ' + Point_Z + "</P>";
+          File.AppendAllText(PathToSave, NewStr + Environment.NewLine);
+        }
+        else File.AppendAllText(PathToSave, str + Environment.NewLine);
+      }
+
     }
   }
 

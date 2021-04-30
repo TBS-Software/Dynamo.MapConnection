@@ -24,10 +24,6 @@ namespace MapConnection
 	public class Cadastr
 	{
 		private Cadastr() { }
-		public static void GML_LinePolygonsIntersection(string GML_PathToLine, string GML_PathToPolygons)
-		{
-     
-    }
 
 	}
 }

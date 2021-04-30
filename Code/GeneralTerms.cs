@@ -27,7 +27,7 @@ namespace MapConnection
 
     [MultiReturn(new[] { "For SK-42 to WGS-84 EPSG:5044", "For SK-42 to WGS-84 and SK-63 EPSG:1267", "For SK-42 to WGS-84 EPSG:1254", "For SK-95 to WGS-84 EPSG:5043",
         "For SK-95 to WGS-84 EPSG:1281", "MGGT to WGS-84"})]
-    public static Dictionary<string, string> DatumList_ToWGS84()
+    private static Dictionary<string, string> DatumList_ToWGS84()
     {
       return new Dictionary<string, string>
                 {
@@ -41,7 +41,7 @@ namespace MapConnection
     }
     [MultiReturn(new[] { "For SK-42 to PZ-90.11", "For SK-95 to PZ-90.11", "For PZ-90 to PZ-90.11", "For WGS-84 to PZ-90.11",
         "For PZ-90.02 to PZ-90.11", "For GSK-2011 to PZ-90.11", "For SK-42 to GSK-2011", "For SK-95 to GSK-2011",})]
-    public static Dictionary<string, string> DatumList_InternalRussia()
+    private static Dictionary<string, string> DatumList_InternalRussia()
     {
       return new Dictionary<string, string>
                 {
@@ -56,10 +56,10 @@ namespace MapConnection
                 };
     }
     /// <summary>
-    /// Возвращает обратный датум (при необходимости использовать таковой)
+    /// Return inversed datum's string
     /// </summary>
-    /// <param name="CurrentDatumStr">Текущая строчная формулировка датума</param>
-    /// <returns></returns>
+    /// <param name="CurrentDatumStr">Current datum's definition</param>
+    /// <returns>Inversed datum</returns>
     public static string ReverseDatumParameters(string CurrentDatumStr)
     {
       string ReverseStr = null;
@@ -71,6 +71,11 @@ namespace MapConnection
       return ReverseStr;
 
     }
+    /// <summary>
+    /// Convert string datum info to number's values
+    /// </summary>
+    /// <param name="InfoAboutDatum"></param>
+    /// <returns>Dictionary with datum's parameters</returns>
     public static Dictionary<string, double> GetDatumInfo(string InfoAboutDatum)
     {
       //Example of datum's string: 23.57,-140.95,-79.8,0.00,-0.35,-0.79,-0.22
@@ -86,20 +91,35 @@ namespace MapConnection
                     {"Scale factor", Convert.ToDouble(GetDatumParameters[6])*Math.Pow (10,-6)},
                 };
     }
+    /// <summary>
+    /// Convert User's input data to ellipsoid parameters
+    /// </summary>
+    /// <param name="Axis_a_meters">Main axis of ellipsoid, meters</param>
+    /// <param name="Flattening">Value of flattening, f.e. 298.3 without "1/..."</param>
+    /// <returns>Dictionary with ellipsoid's parameters</returns>
     public static Dictionary<string, double> Custom_EllipsoidParameters(string Axis_a_meters, string Flattening)
     {
       double a = Convert.ToDouble(Axis_a_meters); //Main axis, meters
       double flattening = 1 / Convert.ToDouble(Flattening); //Reverse flattening = 1/...
 
       double e2 = flattening * (2 - flattening); //Eccentricity in square
+      double b = a - a * flattening;
+      double e1 = 1 / Math.Pow(1 - Math.Pow(flattening, 2), 2);
 
       return new Dictionary<string, double>
                 {
                     {"Axis a", a},
                     {"Reverse flattening", flattening},
                     {"Eccentricity2", e2},
+                    {"Axis b",b},
+                    {"Second eccentricity",e1},
                 };
     }
+    /// <summary>
+    /// Return ellipsoid parameters from input it's name
+    /// </summary>
+    /// <param name="EllipsoidName">Fixed name of ellipsoid</param>
+    /// <returns>Dictionary with ellipsoid's parameters</returns>
     public static Dictionary<string, double> EllipsoidParameters(string EllipsoidName)
     {
       double a = 0d; //Main axis, meters
@@ -145,6 +165,16 @@ namespace MapConnection
 					          {"Second eccentricity",e1},
                 };
     }
+    /// <summary>
+    /// Usage datum at process to convert one geodetic coordinates to another
+    /// </summary>
+    /// <param name="DatumInfo">Dictionary with datum parameters</param>
+    /// <param name="SourceEllipsoid">Dictionary with parameters for source ellipsoid</param>
+    /// <param name="FinishEllipsoid">Dictionary with parameters for target ellipsoid</param>
+    /// <param name="Latitude">Latitude in radians</param>
+    /// <param name="Longitude">Longitude in radians</param>
+    /// <param name="Height">Height in meters</param>
+    /// <returns></returns>
     [MultiReturn(new[] { "Latitude, radians", "Longitude, radians", "Latitude, grades", "Longitude, grades", "Height, meters" })]
     public static Dictionary<string, double> Datum_Recalculation(
          Dictionary<string, double> DatumInfo,
@@ -202,7 +232,11 @@ namespace MapConnection
                      {"Height, meters", H2},
                 };
     }
-
+    /// <summary>
+    /// Convert string format to Dictionary with coordinate system parameters
+    /// </summary>
+    /// <param name="CS_Name">String witj CS description</param>
+    /// <returns>Dictionary with coordinate system parameters</returns>
     public static Dictionary<string, double> GetCSParameters(string CS_Name)
     {
       //string DataStr;
