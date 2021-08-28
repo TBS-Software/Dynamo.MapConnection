@@ -14,7 +14,7 @@ using Autodesk.AutoCAD.Runtime;
 using OSGeo.MapGuide;
 using Autodesk.Gis.Map.Platform;
 using Autodesk.AutoCAD.Windows;
-using Autodesk.DesignScript.Runtime;
+//using Autodesk.DesignScript.Runtime;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.NetworkInformation;
 using System.Xml;
@@ -38,6 +38,18 @@ namespace MapConnection
 
 			return csCode;
 		}
+        /// <summary>
+        /// Get EPSG code for assigned to drawing coordinate system as string value
+        /// </summary>
+        /// <returns></returns>
+        public static string GetEPSGForCurrentCS ()
+		{
+            Autodesk.Gis.Map.Platform.AcMapMap map = Autodesk.Gis.Map.Platform.AcMapMap.GetCurrentMap();
+            OSGeo.MapGuide.MgCoordinateSystemFactory factory = new OSGeo.MapGuide.MgCoordinateSystemFactory();
+            string wkt = map.GetMapSRS();
+            string EPSG = factory.ConvertWktToEpsgCode(wkt).ToString();
+            return EPSG;
+        }
     /// <summary>
     /// Node return WKT code of assigned CS of drawing
     /// </summary>
